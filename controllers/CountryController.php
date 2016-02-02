@@ -83,6 +83,7 @@ class CountryController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->cache->delete(md5(__CLASS__."::findModel".$id));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -113,7 +114,12 @@ class CountryController extends Controller
      */
     protected function findModel($id)
     {
+        $cache = Yii::$app->cache->get(md5(__METHOD__.$id));
+        if($cache){
+            return $cache;
+        }
         if (($model = Country::findOne($id)) !== null) {
+            Yii::$app->cache->set(md5(__METHOD__.$id),$model,180);
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

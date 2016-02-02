@@ -6,14 +6,14 @@ $config = [
     'id' => 'mymotionloc',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language'=>'ru-RU',
+    'language' => 'ru-RU',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'Lb3s6n-ZSPc0_TeLrKYWY_rXdmA8n1c8',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\MemCache',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -49,9 +49,15 @@ $config = [
                 ]
             ]
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName'=>false,
+            'rules' => []
+        ],
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
+//    'catchAll'=>['country']
 ];
 
 if (YII_ENV_DEV) {

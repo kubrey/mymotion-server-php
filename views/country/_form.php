@@ -11,8 +11,10 @@ use yii\widgets\ActiveForm;
 <div class="country-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?php if ($model->isNewRecord): ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
+        <?= $form->field($model, 'id')->textInput() ?>
+    <?php endif; ?>
 
     <?= $form->field($model, 'country_code')->textInput(['maxlength' => true]) ?>
 

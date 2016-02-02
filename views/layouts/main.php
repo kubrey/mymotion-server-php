@@ -7,9 +7,13 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use app\assets\MymoAsset;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
+//MymoAsset::register($this);
+
+//echo (new MymoAsset())->basePath;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -27,7 +31,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'MyMotion',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -61,9 +65,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; My Motion <?= date('Y') ?></p>
     </div>
 </footer>
 
