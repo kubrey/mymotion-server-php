@@ -14,6 +14,17 @@ use yii\db\ActiveRecord;
 class Country extends ActiveRecord
 {
 
+    private $_label;
+
+    public function getLabel()
+    {
+        return $this->_label;
+    }
+
+    public function setLabel($value)
+    {
+        $this->_label = trim($value);
+    }
     /**
      * @inheritdoc
      */

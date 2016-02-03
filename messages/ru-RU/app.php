@@ -18,14 +18,16 @@
  */
 return [
     'Are you sure you want to delete this item?' => '',
-    'Countries' => 'Страны',
     'Create' => '',
     'Create Country' => '',
     'Delete' => '',
     'Invalid name' => '',
+    'Please contact us if you think this is a server error. Thank you.' => '',
     'Reset' => '',
     'Search' => '',
     'Update {modelClass}: ' => '',
     'Country' => '@@Страна@@',
+    'Countries' => 'Страны',
+    'The above error occurred while the Web server was processing your request.' => 'Не удалось найти указанную страницу',
     'Update' => 'Обновить',
 ];

@@ -14,8 +14,7 @@ use yii\filters\VerbFilter;
  */
 class CountryController extends Controller
 {
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -30,8 +29,7 @@ class CountryController extends Controller
      * Lists all Country models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new CountrySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -46,8 +44,7 @@ class CountryController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -58,8 +55,7 @@ class CountryController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Country();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -77,13 +73,12 @@ class CountryController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
 
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->cache->delete(md5(__CLASS__."::findModel".$id));
+            Yii::$app->cache->delete(md5(__CLASS__ . "::findModel" . $id));
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -98,8 +93,7 @@ class CountryController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -112,14 +106,13 @@ class CountryController extends Controller
      * @return Country the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
-        $cache = Yii::$app->cache->get(md5(__METHOD__.$id));
-        if($cache){
+    protected function findModel($id) {
+        $cache = Yii::$app->cache->get(md5(__METHOD__ . $id));
+        if ($cache) {
             return $cache;
         }
         if (($model = Country::findOne($id)) !== null) {
-            Yii::$app->cache->set(md5(__METHOD__.$id),$model,180);
+            Yii::$app->cache->set(md5(__METHOD__ . $id), $model, 180);
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
